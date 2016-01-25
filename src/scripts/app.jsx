@@ -16,12 +16,17 @@ var AppHistory = ReactRouter.useRouterHistory(RouterHistory.createHashHistory)({
 // const appHistory = useRouterHistory(createHashHistory)({ queryKey: false })
 // <Router history={appHistory}/>
 
+var $ = require('./js/lib/jquery');
+$.cookie = require('./js/lib/jquery.cookie');
+$.cookie.json = true;
+
+var Api = require('./js/api');
 var Index = require('./jsx/index');
 var About = require('./jsx/about');
 var Users = require('./jsx/users');
 var User = require('./jsx/user');
 var AntdComponent = require('./jsx/antdComponent');
-var NoMatch = require('./jsx/noMatch');
+var NoMatch = require('./jsx/components/noMatch');
 
 ReactDOM.render((
   <Router history={HashHistory}>

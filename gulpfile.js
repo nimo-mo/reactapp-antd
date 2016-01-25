@@ -67,7 +67,8 @@ gulp.task('watch', ['compile-less','webpack'], function() {
   gulp.watch(
     [
       'src/styles/**/*.less',
-      'src/scripts/**/*.jsx'
+      'src/scripts/**/*.jsx',
+      'src/scripts/js/*.js'
     ],
     [
       'compile-less',
