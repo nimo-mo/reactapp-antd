@@ -1,0 +1,8 @@
+bower_components
+node_modules
+dist
+.tmp
+.DS_Store
+npm-debug.log
+src/styles/app.css
+src/scripts/app.js
