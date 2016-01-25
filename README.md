@@ -1,24 +1,24 @@
-# reactapp with gulp & webpack
+# reactapp + antd with gulp & webpack
 
 ##开发环境
-###安装依赖(在开始之前请安装node.js、gulp、bower)
-`cd path/to/reactapp`
+###安装依赖(在开始之前请安装node.js)
+`cd path/to/reactapp-antd`
 
 `npm install`
-
-`bower install`
-
-##启动服务
-`npm start`
+`
 
 ##开启实时编译
-`cd path/to/reactapp` (open a new terminal window or tab)
+`cd path/to/reactapp`
 
-`gulp compile`
+`gulp watch`
 
-[http://localhost:1080/](http://localhost:1080/)
 
-##发布
+##启动服务
+`npm start`  (open a new terminal window or tab)
+
+[http://localhost:2048/](http://localhost:2048/)
+
+##打包构建
 `gulp build`
 
 ##相关资料
