@@ -53,7 +53,10 @@ gulp.task('compress-js', ['webpack'], function() {
 });
 
 gulp.task('compress-css', ['compile-less'], function() {
-  return gulp.src('src/styles/app.css')
+  return gulp.src([
+    'src/styles/app.css',
+    'src/styles/antd.css'
+  ])
     .pipe(cssnano())
     .pipe(md5(5,'dist/*.html'))
     .pipe(gulp.dest('dist/styles'));

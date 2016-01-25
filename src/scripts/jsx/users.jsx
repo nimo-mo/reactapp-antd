@@ -35,7 +35,7 @@ var Users = React.createClass({
 									<tr key={index}>
 										<td>{user.username}</td>
 										<td>{user.useremail}</td>
-										<td><a href={'user/'+user.userid}>userdetail</a></td>
+										<td><a href={'#/user/'+user.userid}>userdetail</a></td>
 									</tr>
 								)
 							})
