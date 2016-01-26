@@ -6,19 +6,20 @@ var RouterHistory = require('history'); // 3d part
 var Redirect = ReactRouter.Redirect;
 var Route = ReactRouter.Route;
 var Router = ReactRouter.Router;
-var HashHistory = ReactRouter.hashHistory;
+// var HashHistory = ReactRouter.hashHistory;
 var BrowserHistory = ReactRouter.browserHistory;
-var AppHistory = ReactRouter.useRouterHistory(RouterHistory.createHashHistory)({queryKey: false});
+// var AppHistory = ReactRouter.useRouterHistory(RouterHistory.createHashHistory)({queryKey: false});
 // @ https://github.com/rackt/react-router/blob/master/upgrade-guides/v2.0.0.md#using-history-with-router
 // import { Router, useRouterHistory } from 'react-router'
 // import { createHashHistory } from 'history'
 // // useRouterHistory creates a composable higher-order function
 // const appHistory = useRouterHistory(createHashHistory)({ queryKey: false })
 // <Router history={appHistory}/>
-
-var $ = require('./js/lib/jquery');
-$.cookie = require('./js/lib/jquery.cookie');
+var injectTapEventPlugin = require('react-tap-event-plugin');
+var $ = window.$ = require('jquery');
+require('jquery.cookie');
 $.cookie.json = true;
+injectTapEventPlugin();
 
 var Api = require('./js/api');
 var Index = require('./jsx/index');
@@ -29,7 +30,7 @@ var AntdComponent = require('./jsx/antdComponent');
 var NoMatch = require('./jsx/components/noMatch');
 
 ReactDOM.render((
-  <Router history={HashHistory}>
+  <Router history={BrowserHistory}>
   	<Route path="/" components={Index}></Route>
     <Route path="/index" components={Index}></Route>
     <Route path="/about" components={About}></Route>
