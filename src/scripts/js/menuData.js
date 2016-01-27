@@ -1,44 +1,46 @@
+
 module.exports = [{
 	title: '用户管理',
 	iconCls: 'icon',
-	path: '/user/1'
+	path: '#/users'
 },{
 	title: '讲师管理',
-	iconCls: 'icon'
+	iconCls: 'icon',
+	path: '#/lecturers'
 },{
 	title: '助理管理',
 	iconCls: 'icon',
-	path: '/path/to/module'
+	path: '#/assistants'
 },{
 	title: '课程管理',
 	iconCls: 'icon',
-	path: '/path/to/module'
+	path: '#/courses'
 },{
 	title: '课时安排',
 	iconCls: 'icon',
-	path: '/path/to/module'
+	path: '#/schedules'
 },{
 	title: '已发布课程',
 	iconCls: 'icon',
-	path: '/path/to/module'
+	path: '#/schedules/published'
 },{
 	title: '教室管理',
 	iconCls: 'icon',
-	path: '/path/to/module'
+	path: '#/classrooms'
 },{
 	title: '素材管理',
 	iconCls: 'icon',
-	path: '/path/to/module'
+	path: '#/materials'
 },{
 	title: '自动回复管理',
 	iconCls: 'icon',
-	path: '/path/to/module'
+	path: '#/messages/autoreply'
 },{
 	title: '对话回复管理',
 	iconCls: 'icon',
-	path: '/path/to/module'
+	path: '#/messages/talking'
 },{
-	title: '报表',
+	title: '报表总览',
 	iconCls: 'icon',
-	path: '/path/to/module'
+	path: '#/dashboard'
 }];

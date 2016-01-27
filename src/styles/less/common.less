@@ -21,3 +21,43 @@ a:link { text-decoration:none; }
 .flow-visible { overflow:visible!important }
 .clearfix { zoom:1 }
 .clearfix:after, .clearfix:before {  display:table; content:''; clear:both }
+
+@border-color: #ddd;
+
+body, .app, .app-container {
+	height: 100%;
+}
+.app-aside {
+	width: 260px;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	background: #efefef;
+	border-right: 1px solid @border-color;
+	.menu {
+		.item {
+			a {
+				font-size: 14px;
+				display: block;
+				padding: 18px;
+				line-height: 1;
+			}
+			a:hover {
+				background: #ddd;
+			}
+			a.current {
+				background: #08c;
+				color: #fff;
+			}
+		}
+	}
+}
+.app-body {
+	height: 100%;
+	margin-left: 260px;
+}
+.app-content {
+	padding: 12px;
+}

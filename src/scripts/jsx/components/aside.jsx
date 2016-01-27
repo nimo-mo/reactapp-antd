@@ -1,7 +1,7 @@
 var React = require('react');
 var MenuData = require('../../js/menuData');
 
-var Menu = React.createClass({
+var Aside = React.createClass({
 	contextTypes: {
     router: React.PropTypes.object.isRequired
   },
@@ -13,8 +13,8 @@ var Menu = React.createClass({
 		console.log(React.PropTypes.object.isRequired);
 		var self = this;
 		return (
-			<div className="menu">
-				<ul>
+			<div className="app-aside">
+				<ul className="menu">
 					{
 						MenuData.map(function (item,index) {
 							return (
@@ -28,7 +28,6 @@ var Menu = React.createClass({
 			</div>
 		);
 	}
-
 });
 
-module.exports = Menu;
+module.exports = Aside;

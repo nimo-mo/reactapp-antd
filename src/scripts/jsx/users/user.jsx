@@ -1,5 +1,5 @@
 var React = require('react');
-var Header = require('./components/header');
+var Aside = require('../components/aside');
 
 var User = React.createClass({
 
@@ -11,23 +11,24 @@ var User = React.createClass({
 			}
 		}
 	},
-
 	componentDidMount: function () {
 		// console.log(1)
 	},
-
 	render: function() {
 		var user = this.state.user;
 		console.log(this.props)
 		return (
-			<div role="user" className="user">
-				<Header />
-				<div>{user.username}</div>
-				<div>{user.useremail}</div>
+			<div className="app-container">
+				<Aside />
+				<div className="app-body">
+					<div className="app-content users animate">
+						<div>{user.username}</div>
+						<div>{user.useremail}</div>
+					</div>
+				</div>
 			</div>
-		);
+		)
 	}
-
 });
 
 module.exports = User;
