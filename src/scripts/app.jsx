@@ -21,6 +21,7 @@ require('jquery.cookie');
 $.cookie.json = true;
 
 var Api = require('./js/api');
+var Login = require('./jsx/login');
 var Index = require('./jsx/index');
 var Assistants = require('./jsx/assistants/index');
 var Classrooms = require('./jsx/classrooms/index');
@@ -37,6 +38,7 @@ var NoMatch = require('./jsx/components/noMatch');
 ReactDOM.render((
   <Router history={HashHistory}>
   	<Route path="/" components={Index}></Route>
+  	<Route path="/login" components={Login}></Route>
     <Route path="/index" components={Index}></Route>
     <Route path="/assistants" components={Assistants}></Route>
     <Route path="/classrooms" components={Classrooms}></Route>
