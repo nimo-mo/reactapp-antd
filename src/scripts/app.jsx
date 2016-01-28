@@ -16,7 +16,7 @@ var HashHistory = ReactRouter.hashHistory;
 // const appHistory = useRouterHistory(createHashHistory)({ queryKey: false })
 // <Router history={appHistory}/>
 var injectTapEventPlugin = require('react-tap-event-plugin')();
-var $ = window.$ = require('jquery');
+window.$ = require('jquery');
 require('jquery.cookie');
 $.cookie.json = true;
 
@@ -34,6 +34,7 @@ var Schedules = require('./jsx/schedules/index');
 var Users = require('./jsx/users/index');
 var User = require('./jsx/users/user');
 var NoMatch = require('./jsx/components/noMatch');
+var Start = !!$.cookie('X-User-Token') ? Index : Login;
 
 ReactDOM.render((
   <Router history={HashHistory}>

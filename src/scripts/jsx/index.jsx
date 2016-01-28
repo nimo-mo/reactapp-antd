@@ -10,8 +10,8 @@ var Index = React.createClass({
 		return (
 			<div className="app-container">
 				<Aside />
-				<div className="app-body index animate">
-					Index
+				<div className="app-body">
+					<div className="app-content index animate">Index</div>
 				</div>
 			</div>
 		);

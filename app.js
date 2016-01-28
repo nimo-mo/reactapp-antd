@@ -15,6 +15,10 @@ app.get('*', function (request, response) {
   response.sendFile(path.resolve(__dirname, 'src', 'index.html'))
 });
 
+app.post('/login', function (request, response) {
+  response.sendFile(path.resolve(__dirname, 'src/response', 'login.json'));
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

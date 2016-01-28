@@ -1,8 +1,13 @@
+var Util = require('./util');
+
+// if needed we can create a api-kit to switch requestUrl in dev env;
+var requestUrl = Util.getRequestUrl() || Util.getLocationOriginPath();
 var api = {};
 
-api.request = function (type,url,data,ajaxSettings) {
+api.request = function (type,path,data,ajaxSettings) {
 	return $.ajax($.extend({
-		url: url,
+		cache: false,
+		url: requestUrl + path,
 		type: type,
 		data: JSON.stringify(data),
 		headers: {
@@ -12,22 +17,21 @@ api.request = function (type,url,data,ajaxSettings) {
 	},ajaxSettings||{}))
 };
 
-api.get = function (url,data,ajaxSettings) {
-	return api.request('GET',url,data,ajaxSettings)
+api.get = function (path,data,ajaxSettings) {
+	return api.request('GET',path,data,ajaxSettings)
 };
 
-api.put = function (url,data,ajaxSettings) {
-	return api.request('PUT',url,data,ajaxSettings)
+api.put = function (path,data,ajaxSettings) {
+	return api.request('PUT',path,data,ajaxSettings)
 };
 
-api.post = function (url,data,ajaxSettings) {
-	return api.request('POST',url,data,ajaxSettings)
+api.post = function (path,data,ajaxSettings) {
+	return api.request('POST',path,data,ajaxSettings)
 };
 
-api.upload = function (url,data,ajaxSettings) {
-	return api.request('POST',url,{},{
+api.upload = function (path,data,ajaxSettings) {
+	return api.request('POST',path,{},{
 		data: data,
-		cache: false,
 		contentType: false,
 		processData: false
 	})

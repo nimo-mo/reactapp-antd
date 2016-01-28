@@ -23,6 +23,7 @@ var Login = React.createClass({
   	}
   },
   login: function () {
+    var self = this ;
   	var username = this.state.username;
   	var password = this.state.password;
   	if (username == '') {
@@ -46,13 +47,20 @@ var Login = React.createClass({
 			errorCls: ''
 		});
 
-  	Api.post('https://www.baidu.com/',{
+    console.log(self.context.router);
+
+  	Api.post('login',{
 			username: username,
 			password: password
 		}).done(function (data, textStatus, jqXHR) {
-		// body...
+		  $.cookie('X-User-Id', data.username);
+      $.cookie('X-User-Token', data.usertoken);
+      self.context.router.push('/index');
   	}).fail(function (jqXHR, textStatus, errorThrown) {
-  		// body...
+  		self.setState({
+        errorMsg: jqXHR.errorMsg,
+        errorCls: 'visible'
+      })
   	});
   },
 	render: function() {

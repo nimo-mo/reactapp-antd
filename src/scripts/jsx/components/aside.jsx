@@ -9,8 +9,6 @@ var Aside = React.createClass({
 	// 	this.context.router.push($(e.target).data('path'));
 	// },
 	render: function() {
-		console.log(this.context.router);
-		console.log(React.PropTypes.object.isRequired);
 		var self = this;
 		return (
 			<div className="app-aside">
