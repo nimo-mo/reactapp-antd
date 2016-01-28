@@ -16,7 +16,7 @@ app.get('*', function (request, response) {
 });
 
 app.post('/login', function (request, response) {
-  response.sendFile(path.resolve(__dirname, 'src/response', 'login.json'));
+  response.sendFile(path.resolve(__dirname, 'response', 'login.json'));
 });
 
 // catch 404 and forward to error handler
