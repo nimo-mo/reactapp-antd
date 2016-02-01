@@ -1,7 +1,8 @@
 var React = require('react');
-var Aside = require('../components/aside');
+var Header = require('../component/header');
+var Aside = require('../component/aside');
 
-var Messages = React.createClass({
+var Classroom = React.createClass({
 	getInitialState: function () {
 		return {}
 	},
@@ -11,10 +12,11 @@ var Messages = React.createClass({
 	render: function() {
 		return (
 			<div className="app-container">
-				<Aside />
+				<Header />
+				<Aside active="classrooms" />
 				<div className="app-body">
-					<div className="app-content messages animate">
-						messages
+					<div className="app-content classrooms animate">
+						classrooms
 					</div>
 				</div>
 			</div>
@@ -23,4 +25,4 @@ var Messages = React.createClass({
 
 });
 
-module.exports = Messages;
+module.exports = Classroom;

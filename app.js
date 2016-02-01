@@ -11,13 +11,26 @@ app.use(favicon(__dirname + '/src/images/favicon.ico'));
 
 // handle every other route with index.html, which will contain
 // a script tag to your application's JavaScript file(s).
-app.get('*', function (request, response) {
-  response.sendFile(path.resolve(__dirname, 'src', 'index.html'))
-});
+// app.get('*', function (request, response) {
+//   response.sendFile(path.resolve(__dirname, 'src', 'index.html'))
+// });
 
 app.post('/login', function (request, response) {
   response.sendFile(path.resolve(__dirname, 'response', 'login.json'));
 });
+
+app.post('/logout', function (request, response) {
+  response.json({})
+});
+
+app.get('/dashboard/*', function (request, response) {
+  response.sendFile(path.resolve(__dirname, 'response', 'dashboard.json'));
+});
+
+app.get('/boss_user/list', function (request, response) {
+  response.sendFile(path.resolve(__dirname, 'response', 'userlist.json'));
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

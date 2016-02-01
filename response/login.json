@@ -1,8 +1,4 @@
 {
 	"username": "oliver",
-	"usertoken": "1234567890987654321",
-	"pageNumber": 1,
-	"pageSize": 50,
-	"total": 200,
-	"lsit": [{"key":"value"}]
+	"usertoken": "1234567890987654321"
 }

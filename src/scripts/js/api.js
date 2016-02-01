@@ -5,15 +5,19 @@ var requestUrl = Util.getRequestUrl() || Util.getLocationOriginPath();
 var api = {};
 
 api.request = function (type,path,data,ajaxSettings) {
+	var url = requestUrl + path;
+	var data = type === 'GET' ? $.param(data) : JSON.stringify(data);
+	var currentUser = Util.getCurrentUser();
+	var headers = {
+		'X-User-Id': currentUser.id,
+		'X-User-Token': currentUser.token
+	}
 	return $.ajax($.extend({
 		cache: false,
-		url: requestUrl + path,
+		url: url,
 		type: type,
-		data: JSON.stringify(data),
-		headers: {
-			'X-User-Id': $.cookie('X-User-Id'),
-			'X-User-Token': $.cookie('X-User-Token')
-		}
+		data: data,
+		headers: headers
 	},ajaxSettings||{}))
 };
 

@@ -1,5 +1,6 @@
 var React = require('react');
 var Api = require('../js/api');
+var Util = require('../js/util');
 
 var Login = React.createClass({
 	contextTypes: {
@@ -12,6 +13,11 @@ var Login = React.createClass({
   		errorMsg: '',
   		errorCls: ''
   	}
+  },
+  componentDidMount: function() {
+    if (!!Util.getCurrentUser().token) {
+      this.context.router.push('/dashboard');
+    }
   },
   setValue: function (e) {
   	var input = e.target;
@@ -47,15 +53,17 @@ var Login = React.createClass({
 			errorCls: ''
 		});
 
-    console.log(self.context.router);
+    // console.log(self.context.router);
 
   	Api.post('login',{
 			username: username,
 			password: password
 		}).done(function (data, textStatus, jqXHR) {
-		  $.cookie('X-User-Id', data.username);
+		  $.cookie('X-User-Id', data.userid);
+      $.cookie('X-User-Name',data.username);
       $.cookie('X-User-Token', data.usertoken);
-      self.context.router.push('/index');
+      $.cookie('X-User-Mobile',data.usermobile)
+      self.context.router.push('/dashboard');
   	}).fail(function (jqXHR, textStatus, errorThrown) {
   		self.setState({
         errorMsg: jqXHR.errorMsg,

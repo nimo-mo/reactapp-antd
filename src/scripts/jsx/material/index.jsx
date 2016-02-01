@@ -1,7 +1,8 @@
 var React = require('react');
-var Aside = require('../components/aside');
+var Header = require('../component/header');
+var Aside = require('../component/aside');
 
-var Assistants = React.createClass({
+var Material = React.createClass({
 	getInitialState: function () {
 		return {}
 	},
@@ -11,10 +12,11 @@ var Assistants = React.createClass({
 	render: function() {
 		return (
 			<div className="app-container">
-				<Aside />
+				<Header />
+				<Aside active="materials" />
 				<div className="app-body">
-					<div className="app-content assistants animate">
-						assistants
+					<div className="app-content materials animate">
+						materials
 					</div>
 				</div>
 			</div>
@@ -23,4 +25,4 @@ var Assistants = React.createClass({
 
 });
 
-module.exports = Assistants;
+module.exports = Material;

@@ -1,46 +1,53 @@
 
 module.exports = [{
+	title: '报表总览',
+	iconCls: 'dashboard',
+	href: '#/dashboard',
+	path: '/dashboard',
+	model: 'dashboard'
+},{
 	title: '用户管理',
-	iconCls: 'icon',
-	path: '#/users'
+	iconCls: 'user',
+	href: '#/user/list/all',
+	path: '/user/list/all',
+	model: 'user'
 },{
 	title: '讲师管理',
-	iconCls: 'icon',
-	path: '#/lecturers'
+	iconCls: 'user-secret',
+	href: '#/lecturer',
+	path: '/lecturer',
+	model: 'lecturer'
 },{
 	title: '助理管理',
-	iconCls: 'icon',
-	path: '#/assistants'
+	iconCls: 'user-plus',
+	href: '#/assistant',
+	path: '/assistant',
+	model: 'assistant'
 },{
 	title: '课程管理',
-	iconCls: 'icon',
-	path: '#/courses'
-},{
+	iconCls: 'tasks',
+	href: '#/course',
+	path: '/course',
+	model: 'course'
+},
+{
 	title: '课时安排',
-	iconCls: 'icon',
-	path: '#/schedules'
-},{
-	title: '已发布课程',
-	iconCls: 'icon',
-	path: '#/schedules/published'
-},{
+	iconCls: 'clock-o',
+	href: '#/schedule',
+	path: '/schedule',
+	model: 'schedule'
+},
+{
 	title: '教室管理',
-	iconCls: 'icon',
-	path: '#/classrooms'
-},{
-	title: '素材管理',
-	iconCls: 'icon',
-	path: '#/materials'
-},{
-	title: '自动回复管理',
-	iconCls: 'icon',
-	path: '#/messages/autoreply'
-},{
-	title: '对话回复管理',
-	iconCls: 'icon',
-	path: '#/messages/talking'
-},{
-	title: '报表总览',
-	iconCls: 'icon',
-	path: '#/dashboard'
+	iconCls: 'university',
+	href: '#/classroom',
+	path: '/classroom',
+	model: 'classroom'
+},
+{
+	title: '微信回复管理',
+	iconCls: 'wechat',
+	href: '#/message',
+	path: '/message',
+	model: 'classroom'
 }];

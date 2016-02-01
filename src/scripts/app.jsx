@@ -23,34 +23,34 @@ $.cookie.json = true;
 var Api = require('./js/api');
 var Login = require('./jsx/login');
 var Index = require('./jsx/index');
-var Assistants = require('./jsx/assistants/index');
-var Classrooms = require('./jsx/classrooms/index');
-var Courses = require('./jsx/courses/index');
+var Assistant = require('./jsx/assistant/index');
+var Classroom = require('./jsx/classroom/index');
+var Course = require('./jsx/course/index');
 var Dashboard = require('./jsx/dashboard/index');
-var Lecturers = require('./jsx/lecturers/index');
-var Materials = require('./jsx/materials/index');
-var Messages = require('./jsx/messages/index');
-var Schedules = require('./jsx/schedules/index');
-var Users = require('./jsx/users/index');
-var User = require('./jsx/users/user');
-var NoMatch = require('./jsx/components/noMatch');
+var Lecturer = require('./jsx/lecturer/index');
+var Material = require('./jsx/material/index');
+var Message = require('./jsx/message/index');
+var Schedule = require('./jsx/schedule/index');
+var UserList = require('./jsx/user/list');
+var UserDetail = require('./jsx/user/detail');
+var NoMatch = require('./jsx/component/noMatch');
 var Start = !!$.cookie('X-User-Token') ? Index : Login;
 
 ReactDOM.render((
   <Router history={HashHistory}>
-  	<Route path="/" components={Index}></Route>
+  	<Route path="/" components={Login}></Route>
   	<Route path="/login" components={Login}></Route>
     <Route path="/index" components={Index}></Route>
-    <Route path="/assistants" components={Assistants}></Route>
-    <Route path="/classrooms" components={Classrooms}></Route>
-    <Route path="/courses" components={Courses}></Route>
+    <Route path="/assistant" components={Assistant}></Route>
+    <Route path="/classroom" components={Classroom}></Route>
+    <Route path="/course" components={Course}></Route>
     <Route path="/dashboard" components={Dashboard}></Route>
-    <Route path="/lecturers" components={Lecturers}></Route>
-    <Route path="/materials" components={Materials}></Route>
-    <Route path="/messages" components={Messages}></Route>
-    <Route path="/schedules" components={Schedules}></Route>
-    <Route path="/users" components={Users}></Route>
-    <Route path="/users/user/:userid" components={User}></Route>
+    <Route path="/lecturer" components={Lecturer}></Route>
+    <Route path="/material" components={Material}></Route>
+    <Route path="/message" components={Message}></Route>
+    <Route path="/schedule" components={Schedule}></Route>
+    <Route path="/user/list/:type" components={UserList}></Route>
+    <Route path="/user/detail/:id" components={UserDetail}></Route>
     <Route path="*" component={NoMatch}/>
   </Router>
 ), document.getElementById('app'));

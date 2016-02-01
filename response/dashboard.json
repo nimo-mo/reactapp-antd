@@ -1,0 +1,33 @@
+
+{
+	"code": 200,
+	"msg": "success",
+	"username": "Oliver Monet",
+	"usertoken": "1234567890987654321",
+	"data":{
+		"page": 1,
+    "size": 20,
+    "sort": "",
+    "direction": "",
+    "total": 500,
+		"list": [{
+				"key": "value",
+				"name": "ovlier",
+				"mobile": "18902461234",
+				"email": "oliver.monet@gmail.com",
+				"otherProperty": "otherProperty"
+			},{
+				"key": "value",
+				"name": "ovlier",
+				"mobile": "18902461234",
+				"email": "oliver.monet@gmail.com",
+				"otherProperty": "otherProperty"
+			},{
+				"key": "value",
+				"name": "ovlier",
+				"mobile": "18902461234",
+				"email": "oliver.monet@gmail.com",
+				"otherProperty": "otherProperty"
+			}]
+	}
+}

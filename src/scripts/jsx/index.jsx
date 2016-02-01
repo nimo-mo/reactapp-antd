@@ -1,5 +1,5 @@
 var React = require('react');
-var Aside = require('./components/aside');
+var Aside = require('./component/aside');
 
 var Index = React.createClass({
 	contextTypes: {
