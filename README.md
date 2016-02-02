@@ -23,13 +23,13 @@ brew install node
 
 
 ##开启实时编译
-`cd path/to/reactapp`
-
 `gulp watch`
 
 
 ##启动服务
-`npm start`  (open a new terminal window or tab)
+`cd path/to/reactapp-antd` (open a new terminal window or tab)
+
+`npm start`
 
 [http://localhost:2048/](http://localhost:2048/)
 
