@@ -1,11 +1,13 @@
 # reactapp + antd with gulp & webpack
 
 ##开发环境
-###安装依赖(在开始之前请安装node.js)
+###在开始之前请安装node.js
 
 下载nodejs [https://nodejs.org/en/](https://nodejs.org/en/) (for windows & OSX)
 
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" (only for OSX 此方法全局安装npm模块无需使用sudo,推荐)
+以下方法仅适用于OSX(推荐)
+
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew update
 
@@ -13,6 +15,8 @@ export PATH="/usr/local/bin:$PATH"
 
 brew install node
 
+
+##进入项目根目录安装依赖
 `cd path/to/reactapp-antd`
 
 `npm install`
