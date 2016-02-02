@@ -5,7 +5,7 @@
 
 下载nodejs [https://nodejs.org/en/](https://nodejs.org/en/) (for windows & OSX)
 
-以下方法仅适用于OSX(推荐)
+以下方法仅适用于OSX(全局安装npm模块时无需sudo,推荐)
 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
