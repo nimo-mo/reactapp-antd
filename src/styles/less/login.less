@@ -1,2 +1,57 @@
-.login {
+.login-box {
+	width: 300px;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	margin: -150px 0 0 -150px;
+	.login-form {
+		background: #fff;
+		padding: 1em;
+		margin-bottom: 1em;
+		.form-item {
+			padding: 12px 0;
+			display: block;
+			.label-name {
+				display: inline-block;
+				width: 15%;
+			}
+			.ui-input {
+				width: 85%;
+			}
+		}
+		.login-btn {
+			margin-left: 1em;
+		}
+	}
+}
+.ui-input, .ui-select {
+	line-height: 1;
+	padding: 8px;
+	border:1px solid #ddd;
+}
+.ui-btn {
+  text-align: center;
+  display: inline-block;
+  color: #fff;
+  padding: .6em 2em;
+  background: #27b6af;
+  border: 0 none;
+}
+.ui-btn.block {
+	display: block;
+}
+.ui-btn:hover {
+  background: #37b6af;
+}
+.error-msg {
+	color: red;
+}
+.api-kit {
+	.ui-input,
+	.ui-select,
+	button {
+		display: block;
+		width: 100%;
+		margin-bottom: 0.5em;
+	}
 }

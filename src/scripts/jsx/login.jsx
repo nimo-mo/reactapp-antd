@@ -2,6 +2,11 @@ var React = require('react');
 var Api = require('../js/api');
 var Util = require('../js/util');
 
+import { Form, Input, Select, Row, Col } from 'antd';
+const FormItem = Form.Item;
+const InputGroup = Input.Group;
+const Option = Select.Option;
+
 var Login = React.createClass({
 	contextTypes: {
     router: React.PropTypes.object.isRequired
@@ -11,13 +16,17 @@ var Login = React.createClass({
   		username: '',
   		password: '',
   		errorMsg: '',
-  		errorCls: ''
+  		errorCls: '',
+      requestUrl: ''
   	}
   },
   componentDidMount: function() {
     if (!!Util.getCurrentUser().token) {
       this.context.router.push('/dashboard');
     }
+    // this.setState({requestUrl:Util.getRequestUrl()});
+    $('.api-select').val(Util.getRequestUrl());
+    $('.api-input').val(Util.getRequestUrl());
   },
   setValue: function (e) {
   	var input = e.target;
@@ -71,18 +80,49 @@ var Login = React.createClass({
       })
   	});
   },
+  onChange: function (e) {
+    this.setState({requestUrl:e.target.value});
+    console.log(this.state.requestUrl);
+  },
+  setRequestUrl: function () {
+    Util.setRequestUrl(this.state.requestUrl);
+    window.location.reload();
+  },
 	render: function() {
 		// console.log(this.context.router);
+    // api-kit
+    var ApiKit = location.hostname != 'boss.pinkestudy.com' ? (
+      <div className="api-kit tac">
+        <select className="ui-select api-select" onChange={this.onChange}>
+          <option value="http://112.74.76.109:8080/PkbBiz/">develop</option>
+          <option value="http://localhost:2048/">location</option>
+        </select>
+        <input className="ui-input api-input" placeholder="请选择一个api请求地址或自定义输入" value={this.state.requestUrl}  onChange={this.onChange} />
+        <div className="tac"><button className="ui-btn block" type="button" onTouchTap={this.setRequestUrl}>设 置</button></div>
+      </div>
+    ) : null;
+
 		return (
 			<div className="app-container without-aside">
 				<div className="app-body">
 					<div className="app-content login animate">
-						<form className="loign-form">
-							<input id="username" name="username" type="text" onChange={this.setValue} />
-							<input id="password" name="password" type="password" onChange={this.setValue} />
-							<button type="button" onTouchTap={this.login}>登录</button>
-						</form>
-						<div className={"error-msg login-error-msg " + this.state.errorCls}>{this.state.errorMsg}</div>
+            <div className="login-box">
+  						<form className="login-form">
+  							<label className="form-item">
+                  <span className="label-name">用户名</span>
+                  <input className="ui-input" id="username" name="username" type="text" onChange={this.setValue} />
+                </label>
+  							<label className="form-item">
+                  <span className="label-name">密 码</span>
+                  <input className="ui-input" id="password" name="password" type="password" onChange={this.setValue} />
+                </label>
+  							<div className="tar">
+                  <span className={"error-msg login-error-msg " + this.state.errorCls}>{this.state.errorMsg}</span>
+                  <button className="ui-btn login-btn" type="button" onTouchTap={this.login}>登 录</button>
+                </div>
+  						</form>
+              {ApiKit}
+            </div>
 					</div>
 				</div>
 			</div>
