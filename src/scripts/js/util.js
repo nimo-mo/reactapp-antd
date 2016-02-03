@@ -35,7 +35,7 @@ util.clearCurrentUser = function () {
 };
 
 util.pushToLogin = function (loginPath,reactScope) {
-	reactScope.context.router.push(loginPath);
+	reactScope.props.history.push(loginPath);
 };
 
 module.exports = util;

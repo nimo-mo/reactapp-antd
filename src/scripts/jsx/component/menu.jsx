@@ -19,7 +19,17 @@ var Menu = React.createClass({
 						MenuData.map(function (item,index) {
 							return (
 								<li className="item" key={index}>
-									<a href={item.path}>{item.title}</a>
+									<a href={item.children ? "javascript:;" : item.href }>{item.title}</a>
+									{
+										item.children ?
+										item.children.map(function (item,index) {
+											return (
+												<li className="child-item" key={index}>
+													<a href={item.href}>{item.title}</a>
+												</li>
+											)
+										}) : null
+									}
 								</li>
 							)
 						})

@@ -1,15 +1,20 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
+var ReactRouter = require('react-router');
+var RouterHistory = require('history'); // 3d part
+var AppHistory = ReactRouter.useRouterHistory(RouterHistory.createHashHistory)({queryKey: false});
+
 var Api = require('../js/api');
 var Util = require('../js/util');
-
-import { Form, Input, Select, Row, Col } from 'antd';
-const FormItem = Form.Item;
-const InputGroup = Input.Group;
-const Option = Select.Option;
+var Header = require('./component/header');
+var Aside = require('./component/aside');
 
 var Login = React.createClass({
-	contextTypes: {
-    router: React.PropTypes.object.isRequired
+	// contextTypes: {
+ //    router: React.PropTypes.object.isRequired
+ //  },
+  childContextTypes: {
+    history: React.PropTypes.object
   },
   getInitialState: function() {
   	return {
@@ -22,7 +27,7 @@ var Login = React.createClass({
   },
   componentDidMount: function() {
     if (!!Util.getCurrentUser().token) {
-      this.context.router.push('/dashboard');
+      this.props.history.push('/dashboard');
     }
     // this.setState({requestUrl:Util.getRequestUrl()});
     $('.api-select').val(Util.getRequestUrl());
@@ -72,7 +77,9 @@ var Login = React.createClass({
       $.cookie('X-User-Name',data.username);
       $.cookie('X-User-Token', data.usertoken);
       $.cookie('X-User-Mobile',data.usermobile)
-      self.context.router.push('/dashboard');
+      self.props.history.push('/dashboard');
+      ReactDOM.render(<Header history={AppHistory} />, document.getElementById('app-header'));
+      ReactDOM.render(<Aside history={AppHistory} />, document.getElementById('app-aside'));
   	}).fail(function (jqXHR, textStatus, errorThrown) {
   		self.setState({
         errorMsg: jqXHR.errorMsg,
@@ -103,28 +110,26 @@ var Login = React.createClass({
     ) : null;
 
 		return (
-			<div className="app-container without-aside">
-				<div className="app-body">
-					<div className="app-content login animate">
-            <div className="login-box">
-  						<form className="login-form">
-  							<label className="form-item">
-                  <span className="label-name">用户名</span>
-                  <input className="ui-input" id="username" name="username" type="text" onChange={this.setValue} />
-                </label>
-  							<label className="form-item">
-                  <span className="label-name">密 码</span>
-                  <input className="ui-input" id="password" name="password" type="password" onChange={this.setValue} />
-                </label>
-  							<div className="tar">
-                  <span className={"error-msg login-error-msg " + this.state.errorCls}>{this.state.errorMsg}</span>
-                  <button className="ui-btn login-btn" type="button" onTouchTap={this.login}>登 录</button>
-                </div>
-  						</form>
-              {ApiKit}
-            </div>
-					</div>
-				</div>
+			<div className="app-content login animate">
+        <div className="login-shim">
+          <div className="login-box">
+  					<form className="login-form">
+  						<label className="form-item">
+                <span className="label-name">用户名</span>
+                <input className="ui-input" id="username" name="username" type="text" onChange={this.setValue} />
+              </label>
+  						<label className="form-item">
+                <span className="label-name">密 码</span>
+                <input className="ui-input" id="password" name="password" type="password" onChange={this.setValue} />
+              </label>
+  						<div className="tar">
+                <span className={"error-msg login-error-msg " + this.state.errorCls}>{this.state.errorMsg}</span>
+                <button className="ui-btn login-btn" type="button" onTouchTap={this.login}>登 录</button>
+              </div>
+  					</form>
+            {ApiKit}
+          </div>
+        </div>
 			</div>
 		)
 	}

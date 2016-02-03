@@ -1,6 +1,4 @@
 var React = require('react');
-var Header = require('../component/header');
-var Aside = require('../component/aside');
 var AppContentHeader = require('../component/appContentHeader');
 var Api = require('../../js/api');
 
@@ -108,27 +106,21 @@ var UserList = React.createClass({
 		  }
 		}];
 		return (
-			<div className="app-container">
-				<Header />
-				<Aside active="user" />
-				<div className="app-body">
-					<div className="app-content userlist animate">
-						<AppContentHeader crumb={this.state.crumb} />
-						<div className="app-content-body">
-							<div className="ui-panel">
-								<div className="ui-panel-body">
-									<Tabs defaultActiveKey="1" onChange={this.tabChange}>
-								    <TabPane tab="选项卡一" key="1"></TabPane>
-								    <TabPane tab="选项卡二" key="2"></TabPane>
-								    <TabPane tab="选项卡三" key="3"></TabPane>
-								  </Tabs>
-									<Table
-										columns={columns}
-										pagination={pagination}
-										dataSource={state.dataSource}
-										bordered />
-								</div>
-							</div>
+			<div className="app-content userlist animate">
+				<AppContentHeader crumb={this.state.crumb} />
+				<div className="app-content-body">
+					<div className="ui-panel">
+						<div className="ui-panel-body">
+							<Tabs defaultActiveKey="1" onChange={this.tabChange}>
+						    <TabPane tab="选项卡一" key="1"></TabPane>
+						    <TabPane tab="选项卡二" key="2"></TabPane>
+						    <TabPane tab="选项卡三" key="3"></TabPane>
+						  </Tabs>
+							<Table
+								columns={columns}
+								pagination={pagination}
+								dataSource={state.dataSource}
+								bordered />
 						</div>
 					</div>
 				</div>

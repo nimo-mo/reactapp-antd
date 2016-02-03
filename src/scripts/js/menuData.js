@@ -4,50 +4,60 @@ module.exports = [{
 	iconCls: 'dashboard',
 	href: '#/dashboard',
 	path: '/dashboard',
-	model: 'dashboard'
+	module: 'dashboard'
 },{
 	title: '用户管理',
 	iconCls: 'user',
-	href: '#/user/list/all',
-	path: '/user/list/all',
-	model: 'user'
-},{
-	title: '讲师管理',
-	iconCls: 'user-secret',
-	href: '#/lecturer',
-	path: '/lecturer',
-	model: 'lecturer'
-},{
-	title: '助理管理',
-	iconCls: 'user-plus',
-	href: '#/assistant',
-	path: '/assistant',
-	model: 'assistant'
+	href: '#/user/list/normal',
+	path: '/user',
+	module: 'user',
+	children: [{
+		title: '普通用户',
+		href: '#/user/list/normal',
+		path: '/user/list/normal'
+	},{
+		title: '讲师用户',
+		href: '#/user/list/lecturer',
+		path: '/user/list/lecturer'
+	},{
+		title: '助理用户',
+		href: '#/user/list/assistant',
+		path: '/user/list/assistant'
+	}]
 },{
 	title: '课程管理',
 	iconCls: 'tasks',
-	href: '#/course',
+	href: '#/course/list/all',
 	path: '/course',
-	model: 'course'
-},
-{
-	title: '课时安排',
-	iconCls: 'clock-o',
-	href: '#/schedule',
-	path: '/schedule',
-	model: 'schedule'
-},
-{
+	module: 'course',
+	children: [{
+		title: '所有课程',
+		href: '#/course/list/all',
+		path: '/course/list/all'
+	},{
+		title: '已发布课程',
+		href: '#/course/list/published',
+		path: '/course/list/published'
+	}]
+},{
 	title: '教室管理',
 	iconCls: 'university',
 	href: '#/classroom',
 	path: '/classroom',
-	model: 'classroom'
-},
-{
+	module: 'classroom'
+},{
 	title: '微信回复管理',
 	iconCls: 'wechat',
-	href: '#/message',
+	href: '#/message/list/pushed',
 	path: '/message',
-	model: 'classroom'
+	module: 'message',
+	children: [{
+		title: '自动回复',
+		href: '#/message/list/pushed',
+		path: '/message/list/pushed'
+	},{
+		title: '对话回复',
+		href: '#/message/list/121',
+		path: '/message/list/121'
+	}]
 }];

@@ -1,6 +1,4 @@
 var React = require('react');
-var Header = require('../component/header');
-var Aside = require('../component/aside');
 
 var Classroom = React.createClass({
 	getInitialState: function () {
@@ -11,14 +9,8 @@ var Classroom = React.createClass({
 	},
 	render: function() {
 		return (
-			<div className="app-container">
-				<Header />
-				<Aside active="classrooms" />
-				<div className="app-body">
-					<div className="app-content classrooms animate">
-						classrooms
-					</div>
-				</div>
+			<div className="app-content classrooms animate">
+				classrooms
 			</div>
 		);
 	}
