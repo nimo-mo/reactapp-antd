@@ -55,7 +55,7 @@ ReactDOM.render((
     <Route path="/message" components={Message}></Route>
     <Route path="/schedule" components={Schedule}></Route>
     <Route path="/user/list/:type" components={UserList}></Route>
-    <Route path="/user/detail/:id" components={UserDetail}></Route>
+    <Route path="/user/detail/:type/:id" components={UserDetail}></Route>
     <Route path="*" component={NoMatch}/>
   </Router>
 ), document.getElementById('app-body'));

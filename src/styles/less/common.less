@@ -125,6 +125,8 @@ body {
 			opacity: 0;
 			background: #fff;
 			border: 1px solid @border-color;
+			// box-shadow: 0 1px 1px rgba(0,0,0,.05);
+			z-index: 1000;
 			.item {
 				a {
 					color: #666;
@@ -164,7 +166,7 @@ body {
 	overflow-x:hidden; 
 }
 .app-aside-inner {
-	width: 260px;
+	width: 200px;
 	padding-top:48px;
 }
 
@@ -176,7 +178,7 @@ body {
 		a {
 			color: #B3B8C3;
 			display: block;
-			padding: 12px;
+			padding: 18px;
 			position: relative;
 			&:hover {
 				color: #fff;
@@ -201,7 +203,7 @@ body {
 			height: 0;
 			transition: 0.365s;
 			.sub-item a {
-				padding-left: 32px;
+				padding-left: 40px;
 			}
 		}
 	}
@@ -232,7 +234,7 @@ body {
 			.sub-item.active {
 				a {
 					color: #fff;
-					background: #000;
+					// background: #000;
 				}
 			}
 		}
@@ -240,7 +242,7 @@ body {
 	
 }
 .app-body {
-	margin-left: 260px;
+	margin-left: 200px;
 	background: #F0F3F3;
 }
 .app-content {
@@ -262,6 +264,9 @@ body {
 		top: 50%;
 		margin-top: -7px;
 		.crumb-item {
+			a {
+				color: #565656;
+			}
 			i {
 				font-variant: normal;
 				padding: 0 8px;

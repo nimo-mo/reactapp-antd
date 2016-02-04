@@ -20,6 +20,7 @@ app.post('/login', function (request, response) {
 });
 
 app.post('/logout', function (request, response) {
+  console.log(request);
   response.json({})
 });
 

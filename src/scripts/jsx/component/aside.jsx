@@ -1,17 +1,11 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var ReactRouter = require('react-router');
-var RouterHistory = require('history'); // 3d part
+var RouterHistory = require('history'); // 3rd part lib
 var AppHistory = ReactRouter.useRouterHistory(RouterHistory.createHashHistory)({queryKey: false});
 var MenuData = require('../../js/menuData');
 
-// import { Menu, Icon } from 'antd';
-// const SubMenu = Menu.SubMenu;
-
 var Aside = React.createClass({
-	// contextTypes: {
-	//    router: React.PropTypes.object.isRequired
-	//  },
 	getInitialState: function() {
 		return {
 			theme: 'dark'
@@ -38,6 +32,9 @@ var Aside = React.createClass({
     this.setState({
       current: e.key
     });
+  },
+  itemClick: function () {
+  	
   },
 	render: function() {
 		var self = this;

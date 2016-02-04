@@ -11,7 +11,7 @@ var AppContentHeader = React.createClass({
 					{
 						this.props.crumb.items.map(function (item,index) {
 							return (
-								<span className="crumb-item"><i>/</i><a href={item.href} key={index}>{item.title}</a></span>
+								<span className="crumb-item" key={index}><i>/</i><a href={item.href}>{item.title}</a></span>
 							)
 						})
 					}
