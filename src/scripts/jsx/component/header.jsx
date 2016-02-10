@@ -58,7 +58,7 @@ var Header = React.createClass({
 				<div className="app-header-inner clearfix">
 					<h1 className="logo">DEMO</h1>
 					<div className={"settings"+this.state.openedCls} onClick={this.toggleDropMenu}>
-		        <a className="username arrow arrow-down" href="javascript:;">{Util.getCurrentUser().name}</a>
+		        <a className="username arrow arrow-down" href="javascript:;">{Util.getCurrentUser().name || 'nobody'}</a>
 		        <ul className="drop-menu arrow arrow-up">
 		        	<li className="item"><a href="javascript:;">修改密码</a></li>
 							<li className="item"><a href="javascript:;" onClick={this.logout}>登 出</a></li>

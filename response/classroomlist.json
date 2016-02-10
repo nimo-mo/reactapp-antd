@@ -1,0 +1,65 @@
+{
+	"code": 0,
+	"msg": "",
+	"data": {
+    "page": 1,
+    "size": 20,
+    "sort": "",
+    "direction": "",
+    "total": 3,
+    "list": [
+      {
+        "id": 1,
+        "name": "形象力",
+        "supplier": "深圳英盟欣科技有限公司",
+        "maxseats": 50,
+        "province": "广东省",
+        "city": "深圳市",
+        "area": "南山区",
+        "address": "农林路69号深国投广场一号写字楼402",
+        "contactHuman1":"oliver",
+        "contactNumber1":"18902461234",
+        "contactHuman2":"oliver",
+        "contactNumber2":"18902461234",
+        "contactJobTitle1":"master",
+        "contactJobTitle2":"master",
+        "devices":"投影、音响、白板",
+        "baiduKeywords":"清华大学研究院"
+      },{
+        "id": 1,
+        "name": "形象力",
+        "supplier": "深圳英盟欣科技有限公司",
+        "maxseats": 50,
+        "province": "广东省",
+        "city": "深圳市",
+        "area": "南山区",
+        "address": "农林路69号深国投广场一号写字楼402",
+        "contactHuman1":"oliver",
+        "contactNumber1":"18902461234",
+        "contactHuman2":"oliver",
+        "contactNumber2":"18902461234",
+        "contactJobTitle1":"master",
+        "contactJobTitle2":"master",
+        "devices":"投影、音响、白板",
+        "baiduKeywords":"清华大学研究院"
+      },{
+        "id": 1,
+        "name": "形象力",
+        "supplier": "深圳英盟欣科技有限公司",
+        "maxseats": 50,
+        "province": "广东省",
+        "city": "深圳市",
+        "area": "南山区",
+        "address": "农林路69号深国投广场一号写字楼402",
+        "contactHuman1":"oliver",
+        "contactNumber1":"18902461234",
+        "contactHuman2":"oliver",
+        "contactNumber2":"18902461234",
+        "contactJobTitle1":"master",
+        "contactJobTitle2":"master",
+        "devices":"投影、音响、白板",
+        "baiduKeywords":"清华大学研究院"
+      }
+    ]
+	}
+}

@@ -8,21 +8,21 @@ module.exports = [{
 },{
 	title: '用户管理',
 	iconCls: 'user',
-	href: '#/user/list/normal',
-	path: '/user',
+	href: '#/user/list',
+	path: '/user/list',
 	module: 'user',
 	children: [{
 		title: '普通用户',
-		href: '#/user/list/normal',
-		path: '/user/list/normal'
+		href: '#/user/list',
+		path: '/user/list'
 	},{
 		title: '讲师用户',
-		href: '#/user/list/lecturer',
-		path: '/user/list/lecturer'
+		href: '#/lecturer/list',
+		path: '/lecturer/list'
 	},{
 		title: '助理用户',
-		href: '#/user/list/assistant',
-		path: '/user/list/assistant'
+		href: '#/assistant/list',
+		path: '/assistant/list'
 	}]
 },{
 	title: '课程管理',
@@ -42,8 +42,8 @@ module.exports = [{
 },{
 	title: '教室管理',
 	iconCls: 'university',
-	href: '#/classroom',
-	path: '/classroom',
+	href: '#/classroom/list',
+	path: '/classroom/list',
 	module: 'classroom'
 },{
 	title: '微信回复管理',
@@ -60,4 +60,10 @@ module.exports = [{
 		href: '#/message/list/121',
 		path: '/message/list/121'
 	}]
+},{
+	title: '新增管理员',
+	iconCls: 'user-plus',
+	href: '#/admin',
+	path: '/admin',
+	module: 'admin'
 }];

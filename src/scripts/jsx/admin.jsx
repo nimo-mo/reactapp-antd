@@ -9,7 +9,7 @@ var Util = require('../js/util');
 var Header = require('./component/header');
 var Aside = require('./component/aside');
 
-var Login = React.createClass({
+var Admin = React.createClass({
 	// contextTypes: {
  //    router: React.PropTypes.object.isRequired
  //  },
@@ -69,17 +69,11 @@ var Login = React.createClass({
 
     // console.log(self.context.router);
 
-  	Api.post('login',{
-			username: username,
+  	Api.post('boss_user/add',{
+			userName: username,
 			password: password
 		}).done(function (data, textStatus, jqXHR) {
-		  $.cookie('X-User-Id', data.userid);
-      $.cookie('X-User-Name',data.username);
-      $.cookie('X-User-Token', data.usertoken);
-      $.cookie('X-User-Mobile',data.usermobile)
-      self.props.history.push('/dashboard');
-      ReactDOM.render(<Header history={AppHistory} />, document.getElementById('app-header'));
-      ReactDOM.render(<Aside history={AppHistory} />, document.getElementById('app-aside'));
+      self.props.history.push('/login');
   	}).fail(function (jqXHR, textStatus, errorThrown) {
   		self.setState({
         errorMsg: jqXHR.errorMsg,
@@ -101,7 +95,7 @@ var Login = React.createClass({
     var ApiKit = location.hostname != 'boss.pinkestudy.com' ? (
       <div className="api-kit tac">
         <select className="ui-select api-select" onChange={this.onChange}>
-          <option value="http://localhost:2048/">develop</option>
+          <option value="http://112.74.76.109:8080/PkbBiz/">develop</option>
           <option value="http://localhost:2048/">location</option>
         </select>
         <input className="ui-input api-input" placeholder="请选择一个api请求地址或自定义输入" value={this.state.requestUrl}  onChange={this.onChange} />
@@ -124,7 +118,7 @@ var Login = React.createClass({
               </label>
   						<div className="tar">
                 <span className={"error-msg login-error-msg " + this.state.errorCls}>{this.state.errorMsg}</span>
-                <button className="ui-btn login-btn" type="button" onTouchTap={this.login}>登 录</button>
+                <button className="ui-btn login-btn" type="button" onTouchTap={this.login}>新增用户</button>
               </div>
   					</form>
             {ApiKit}
@@ -135,4 +129,4 @@ var Login = React.createClass({
 	}
 });
 
-module.exports = Login;
+module.exports = Admin;

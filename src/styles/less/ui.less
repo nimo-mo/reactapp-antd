@@ -1,0 +1,99 @@
+// panel
+.ui-panel {
+	margin-bottom: 12px;
+	background: #fff;
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+	.ui-panel-header {
+		h1 {
+			font-size: 14px;
+		}
+		padding: 12px;
+		border-bottom: 1px solid #eff2f7;
+		color: #767676;
+	}
+	.ui-panel-body {
+		padding: 12px;
+	}
+	.ui-panel-footer {
+		padding: 12px;
+		position: relative;
+		.total-item {
+			line-height: 28px;
+		}
+		.ant-pagination {
+			position: absolute;
+			right: 12px;
+			top: 50%;
+			margin-top: -14px;
+		}
+	}
+}
+
+.ui-panel.last {
+	margin-bottom: 0;
+}
+
+.dashboard-panels {
+	margin: 0 -6px;
+	.ui-panel-wrap {
+		float: left;
+		width: 33.333333%;
+		padding: 0 6px;
+	}
+}
+
+// table
+.ui-table {
+	width: 100%;
+	table-layout: fixed;
+	th,td {
+		padding: 8px;
+		border-bottom: 1px solid @border-color;
+	}
+	th {
+		border-bottom-width: 2px; 
+	}
+	tr:hover td {
+		background: @theme-color-blue;
+		color: #fff;
+		* {color: #fff;}
+	}
+	.index {
+		width: 48px;
+		text-align: center;
+		// border-right: 1px solid @border-color;
+	}
+	.opera-link {
+		margin: 0 4px;
+	}
+}
+
+// form
+.ui-input, .ui-select {
+	transition:0.25s;
+	line-height: 1;
+	padding: 6px;
+	border:1px solid #ddd;
+	border-radius: 3px;
+	&:focus {
+		border-color: #2db7f5;
+		box-shadow: 0 0 10px rgba(45, 183, 245, 0.75);
+	}
+}
+
+.ui-btn {
+  text-align: center;
+  display: inline-block;
+  color: #fff;
+  padding: .6em 2em;
+  background: #27b6af;
+  border: 0 none;
+}
+
+.ui-btn.block {
+	display: block;
+}
+
+.ui-btn:hover {
+  background: #37b6af;
+}

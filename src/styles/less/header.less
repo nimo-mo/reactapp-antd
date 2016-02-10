@@ -1,0 +1,83 @@
+.app-header {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	// border-bottom: 1px solid @border-color;
+}
+.app-header-inner {
+	background: #fff;
+	height: 48px;
+	position: relative;
+	.logo {
+		float: left;
+		font-size: 16px;
+		line-height: 48px;
+		padding-left: 12px;
+	}
+	.settings {
+		position: absolute;
+		right: 12px;
+		top:0;
+		.username {
+			color: #000;
+			display: inline-block;
+			line-height: 48px;
+			padding: 0 36px 0 24px;
+			&:hover {
+				background: #F0F3F3;
+			}
+			&:after {
+				top: 50%;
+				border-width: 4px;
+				margin-top: -2px;
+				right: 24px;
+				margin-left: 0;
+				left: auto;
+				border-top-color: #000;
+			}
+		}
+		.drop-menu {
+			line-height: 1;
+			padding: 12px 0;
+			border-radius: 4px;
+			min-width: 160px;
+			position: absolute;
+			right: 0;
+			top: 60px;
+			visibility: hidden;
+			opacity: 0;
+			background: #fff;
+			border: 1px solid @border-color;
+			// box-shadow: 0 1px 1px rgba(0,0,0,.05);
+			z-index: 1000;
+			.item {
+				a {
+					color: #666;
+					display: block;
+					padding: 6px 16px;
+					&:hover {
+						background: @theme-color-blue;
+						color: #fff;
+					}
+				}
+			}
+			&:after {
+				right: 18px;
+				left: auto;
+				margin-left: auto;
+				border-bottom-color:#fff; 
+			}
+		}
+	}
+	.settings.opened {
+		.username {
+			background: #F0F3F3;
+		}
+		.drop-menu {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}

@@ -17,7 +17,7 @@ var UserDetail = React.createClass({
 	crumb: {
 		current: '用户详情',
 		items:[{
-			href: '#/user/list/normal',
+			href: '#/user/list',
 			title: '用户管理'
 		}]
 	},

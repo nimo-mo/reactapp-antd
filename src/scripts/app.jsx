@@ -23,18 +23,22 @@ $.cookie.json = true;
 
 // console.log(new Date().format('yyyy年MM月dd日 HH:mm:ss'));
 var Util = require('./js/util');
+var Admin = require('./jsx/admin');
 var Login = require('./jsx/login');
-var Index = require('./jsx/index');
-var Classroom = require('./jsx/classroom/index');
 var Course = require('./jsx/course/index');
 var Dashboard = require('./jsx/dashboard/index');
 var Message = require('./jsx/message/index');
+
 var UserList = require('./jsx/user/userlist');
 var LecturerList = require('./jsx/user/lecturerList');
 var AssistantList = require('./jsx/user/assistantList');
 var UserDetail = require('./jsx/user/userDetail');
 var LecturerDetail = require('./jsx/user/lecturerDetail');
 var AssistantDetail = require('./jsx/user/assistantDetail');
+
+var ClassroomList = require('./jsx/classroom/classroomList');
+var ClassroomDetail = require('./jsx/classroom/classroomDetail');
+
 var NoMatch = require('./jsx/component/noMatch');
 var Header = require('./jsx/component/header');
 var Aside = require('./jsx/component/aside');
@@ -44,18 +48,19 @@ ReactDOM.render(<Aside history={AppHistory} />, document.getElementById('app-asi
 ReactDOM.render((
   <Router history={AppHistory}>
   	<Route path="/" components={Login}></Route>
+    <Route path="/admin" components={Admin}></Route>
   	<Route path="/login" components={Login}></Route>
-    <Route path="/index" components={Index}></Route>
-    <Route path="/classroom" components={Classroom}></Route>
+    <Route path="/classroom/list" components={ClassroomList}></Route>
+    <Route path="/classroom/detail/:id" components={ClassroomDetail}></Route>
     <Route path="/course" components={Course}></Route>
     <Route path="/dashboard" components={Dashboard}></Route>
     <Route path="/message" components={Message}></Route>
-    <Route path="/user/list/normal" components={UserList}></Route>
-    <Route path="/user/list/lecturer" components={LecturerList}></Route>
-    <Route path="/user/list/assistant" components={AssistantList}></Route>
-    <Route path="/user/detail/normal/:id" components={UserDetail}></Route>
-    <Route path="/user/detail/lecturer/:id" components={LecturerDetail}></Route>
-    <Route path="/user/detail/assistant/:id" components={AssistantDetail}></Route>
+    <Route path="/user/list" components={UserList}></Route>
+    <Route path="/lecturer/list" components={LecturerList}></Route>
+    <Route path="/assistant/list" components={AssistantList}></Route>
+    <Route path="/user/detail/:id" components={UserDetail}></Route>
+    <Route path="/lecturer/detail/:id" components={LecturerDetail}></Route>
+    <Route path="/assistant/detail/:id" components={AssistantDetail}></Route>
     <Route path="*" component={NoMatch}/>
   </Router>
 ), document.getElementById('app-body'));

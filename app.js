@@ -32,6 +32,30 @@ app.get('/boss_user/list', function (request, response) {
   response.sendFile(path.resolve(__dirname, 'response', 'userlist.json'));
 });
 
+app.get('/classroom/list', function (request, response) {
+  response.sendFile(path.resolve(__dirname, 'response', 'classroomlist.json'));
+});
+
+app.post('/update_role', function (request, response) {
+  response.json({});
+});
+
+app.post('/upload', function (request, response) {
+  response.sendFile(path.resolve(__dirname, 'response', 'upload.json'));
+});
+
+app.get('/lecturer_Avatar', function (request, response) {
+  response.sendFile(path.resolve(__dirname, 'response', 'upload.json'));
+});
+
+app.get('/lecturer_Info', function (request, response) {
+  response.sendFile(path.resolve(__dirname, 'response', 'lecturerinfo.json'));
+});
+
+app.put('/update_lecturer_info', function (request, response) {
+  response.json({});
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
