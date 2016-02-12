@@ -19,6 +19,7 @@
         "company": "深圳市雨新电线电缆有限公司",
         "jobTitle": "master",
         "description": "master",
+        "userrole": "admin+",
         "bossRoles": []
       },
       {
@@ -32,6 +33,7 @@
         "company": "深圳市雨新电线电缆有限公司",
         "jobTitle": "master",
         "description": "master",
+        "userrole": "admin+",
         "bossRoles": []
       },
       {
@@ -45,6 +47,7 @@
         "company": "深圳市雨新电线电缆有限公司",
         "jobTitle": "master",
         "description": "master",
+        "userrole": "admin+",
         "bossRoles": []
       }
     ]

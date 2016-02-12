@@ -16,11 +16,11 @@ module.exports = [{
 		href: '#/user/list',
 		path: '/user/list'
 	},{
-		title: '讲师用户',
+		title: '讲师管理',
 		href: '#/lecturer/list',
 		path: '/lecturer/list'
 	},{
-		title: '助理用户',
+		title: '助理管理',
 		href: '#/assistant/list',
 		path: '/assistant/list'
 	}]
@@ -61,9 +61,18 @@ module.exports = [{
 		path: '/message/list/121'
 	}]
 },{
-	title: '新增管理员',
+	title: 'Admin Plus',
 	iconCls: 'user-plus',
-	href: '#/admin',
-	path: '/admin',
-	module: 'admin'
+	href: '#/admin/list',
+	path: '/admin/list',
+	module: 'admin',
+	children: [{
+		title: '系统管理员',
+		href: '#/admin/list',
+		path: '/admin/list'
+	},{
+		title: '菜单权限',
+		href: '#/admin/privilege',
+		path: '/admin/privilege'
+	}]
 }];

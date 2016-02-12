@@ -56,6 +56,25 @@ app.put('/update_lecturer_info', function (request, response) {
   response.json({});
 });
 
+app.post('/add_free_time', function (request, response) {
+  response.json({});
+});
+
+app.post('/delete_free_time', function (request, response) {
+  response.json({});
+});
+
+app.put('/admin', function (request, response) {
+  response.json({});
+});
+
+app.post('/admin', function (request, response) {
+  response.json({});
+});
+
+app.post('/delete_admin', function (request, response) {
+  response.json({});
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

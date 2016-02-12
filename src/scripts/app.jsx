@@ -23,7 +23,6 @@ $.cookie.json = true;
 
 // console.log(new Date().format('yyyy年MM月dd日 HH:mm:ss'));
 var Util = require('./js/util');
-var Admin = require('./jsx/admin');
 var Login = require('./jsx/login');
 var Course = require('./jsx/course/index');
 var Dashboard = require('./jsx/dashboard/index');
@@ -35,6 +34,9 @@ var AssistantList = require('./jsx/user/assistantList');
 var UserDetail = require('./jsx/user/userDetail');
 var LecturerDetail = require('./jsx/user/lecturerDetail');
 var AssistantDetail = require('./jsx/user/assistantDetail');
+
+var AdminList = require('./jsx/admin/adminList');
+var Privilege= require('./jsx/admin/privilege');
 
 var ClassroomList = require('./jsx/classroom/classroomList');
 var ClassroomDetail = require('./jsx/classroom/classroomDetail');
@@ -48,8 +50,9 @@ ReactDOM.render(<Aside history={AppHistory} />, document.getElementById('app-asi
 ReactDOM.render((
   <Router history={AppHistory}>
   	<Route path="/" components={Login}></Route>
-    <Route path="/admin" components={Admin}></Route>
   	<Route path="/login" components={Login}></Route>
+    <Route path="/admin/list" components={AdminList}></Route>
+    <Route path="/admin/privilege" components={Privilege}></Route>
     <Route path="/classroom/list" components={ClassroomList}></Route>
     <Route path="/classroom/detail/:id" components={ClassroomDetail}></Route>
     <Route path="/course" components={Course}></Route>
