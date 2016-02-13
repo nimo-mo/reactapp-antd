@@ -170,7 +170,7 @@ var BasicInfo = React.createClass({
 								<td className="tar vat">详细描述</td>
 								<td><textarea className="ui-input" name="description" ref="description" rows="6" value={this.state.description} style={{width:500}} onChange={function (e) {
 									this.setState({description:e.target.value})
-								}.bind(this)}></textarea></td>
+								}.bind(this)} /></td>
 								<td className="error-msg"></td>
 							</tr>
 							<tr>

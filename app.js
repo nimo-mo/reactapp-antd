@@ -76,6 +76,14 @@ app.post('/delete_admin', function (request, response) {
   response.json({});
 });
 
+app.get('/menudata', function (request, response) {
+  response.sendFile(path.resolve(__dirname, 'response', 'menudata.json'));
+});
+
+app.put('/menudata', function (request, response) {
+  response.json({});
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

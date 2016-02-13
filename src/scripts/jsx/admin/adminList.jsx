@@ -142,7 +142,7 @@ var AdminList = React.createClass({
 		this.setState({queryUserrole:e.target.value})
 	},
 	onModalUsernameChange: function (e) {
-		// if (this.state.uid) {return}
+		if (this.state.uid) {return}
 		this.setState({modalUsername:e.target.value})
 	},
 	onModalPasswordChange: function (e) {
@@ -197,13 +197,12 @@ var AdminList = React.createClass({
 		  showQuickJumper: true,
 		  pageSizeOptions: ['20','30','50'],
 		  onShowSizeChange: function (current, pageSize) {
-		    // console.log('Current: ', current, '; PageSize: ', pageSize);
 		    this.getUserData(current,pageSize);
-		    this.setState({pageSize:pageSize});
+		    this.setState({pageSize:pageSize,currentPage:current});
 		  }.bind(this),
 		  onChange: function (current) {
-		    // console.log(current);
 		    this.getUserData(current,this.state.pageSize);
+		    this.setState({currentPage:current});
 		  }.bind(this)
 		}
 	},
@@ -256,9 +255,10 @@ var AdminList = React.createClass({
 											<td width="70" className="tar">用户名</td>
 											<td>
 												<input
-													className="ui-input"
-													type="text"
 													ref="username"
+													type="text"
+													className="ui-input"
+													placeholder="请输入用户名"
 													style={{width:'100%'}}
 													value={this.state.modalUsername}
 													onChange={this.onModalUsernameChange} />
@@ -268,11 +268,13 @@ var AdminList = React.createClass({
 											<td className="tar">登录密码</td>
 											<td>
 												<input
-													className="ui-input"
-													type="password"
 													ref="password"
+													type="password"
+													className="ui-input"
+													placeholder="请填输入密码"
 													style={{width:'100%'}}
-													value={this.state.modalPassword} onChange={this.onModalPasswordChange} />
+													value={this.state.modalPassword}
+													onChange={this.onModalPasswordChange} />
 											</td>
 										</tr>
 										<tr>
