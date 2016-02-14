@@ -1,0 +1,55 @@
+{
+	"code": 0,
+	"msg": "",
+	"data": {
+    "page": 1,
+    "size": 20,
+    "sort": "",
+    "direction": "",
+    "total": 100,
+    "list": [
+      {
+        "id": 1,
+        "userName": "Oliver",
+        "createTime": 1454224510000,
+        "updateTime": 1454224510000,
+        "wxNickName": "蕃茄小奴婢",
+        "mobile": "18902461234",
+        "area": "中国广东深圳",
+        "company": "深圳市雨新电线电缆有限公司",
+        "jobTitle": "master",
+        "description": "master",
+        "userrole": "admin+",
+        "bossRoles": []
+      },
+      {
+        "id": 2,
+        "userName": "Oliver",
+        "createTime": 1454224510000,
+        "updateTime": 1454224510000,
+        "wxNickName": "蕃茄小奴婢",
+        "mobile": "18902461234",
+        "area": "中国广东深圳",
+        "company": "深圳市雨新电线电缆有限公司",
+        "jobTitle": "master",
+        "description": "master",
+        "userrole": "admin+",
+        "bossRoles": []
+      },
+      {
+        "id": 3,
+        "userName": "Oliver",
+        "createTime": 1454224510000,
+        "updateTime": 1454224510000,
+        "wxNickName": "蕃茄小奴婢",
+        "mobile": "18902461234",
+        "area": "中国广东深圳",
+        "company": "深圳市雨新电线电缆有限公司",
+        "jobTitle": "master",
+        "description": "master",
+        "userrole": "admin+",
+        "bossRoles": []
+      }
+    ]
+	}
+}

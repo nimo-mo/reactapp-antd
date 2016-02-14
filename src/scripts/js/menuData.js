@@ -71,7 +71,7 @@ module.exports = [{
 		href: '#/admin/list',
 		path: '/admin/list'
 	},{
-		title: '菜单权限',
+		title: '菜单管理',
 		href: '#/admin/privilege',
 		path: '/admin/privilege'
 	}]

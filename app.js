@@ -84,6 +84,14 @@ app.put('/menudata', function (request, response) {
   response.json({});
 });
 
+app.post('/coupon', function (request, response) {
+  response.json({});
+});
+
+app.get('/message_list', function (request, response) {
+  response.sendFile(path.resolve(__dirname, 'response', 'messagelist.json'));
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

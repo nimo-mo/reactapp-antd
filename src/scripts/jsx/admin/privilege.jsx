@@ -45,7 +45,7 @@ var Privilege = React.createClass({
 		this.setState({menuData:e.target.value});
 	},
 	crumb: {
-		current: '菜单权限',
+		current: '菜单管理',
 		items: [{
 			href: '#/admin/privilege',
 			title: 'Admin Plus'

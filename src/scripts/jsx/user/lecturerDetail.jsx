@@ -1,10 +1,9 @@
 var React = require('react');
-var ReactDOM = require('react-dom');
 var AppContentHeader = require('../component/appContentHeader');
 var Api = require('../../js/api');
 var Util = require('../../js/util');
 
-import { Button, DatePicker, TimePicker, Input, Select, Table, Pagination, Modal } from 'antd';
+import { Button, DatePicker, Select, Table, Pagination, Modal } from 'antd';
 var Option = Select.Option;
 
 var UploadAvatar = React.createClass({
@@ -516,12 +515,13 @@ var LecturerDetail = React.createClass({
 		}]
 	},
 	render: function() {
+		var id = this.props.routeParams.id;
 		return (
 			<div className="app-content animate">
 				<AppContentHeader crumb={this.crumb} />
 				<div className="app-content-body lecturer">
-					<FreeTimeList id={this.props.routeParams.id} />
-					<BasicInfo id={this.props.routeParams.id} />
+					<FreeTimeList id={id} />
+					<BasicInfo id={id} />
 					<UploadAvatar />
 				</div>
 			</div>

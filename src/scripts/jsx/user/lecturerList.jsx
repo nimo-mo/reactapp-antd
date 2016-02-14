@@ -29,14 +29,13 @@ var LecturerList = React.createClass({
 	    cancelText: '再考虑一下',
 	    onOk: function () {
 	      Api.post('update_role',{
-	      	from: 'lecturer',
-	      	to: 'normal'
+	      	type: 'normal'
 	      })
 	      .done(function (res) {
 	      	this.getUserData(0,this.state.pageSize);
 	      	Modal.success({
 				    title: '操作成功',
-				    content: '该用的讲师身份已取消，可转至普通用户列表进行查询'
+				    content: '该用的讲师身份已被取消，可转至普通用户列表进行查询'
 				  });
 	      }.bind(this))
 	      .fail(function (error) {
@@ -119,19 +118,18 @@ var LecturerList = React.createClass({
 	generatePagination: function () {
 		return {
 		  total: this.state.total,
-		  current: 1,
+		  current: this.state.currentPage,
 		  pageSize: this.state.pageSize,
 		  showSizeChanger: true,
 		  showQuickJumper: true,
 		  pageSizeOptions: ['20','30','50'],
 		  onShowSizeChange: function (current, pageSize) {
-		    // console.log('Current: ', current, '; PageSize: ', pageSize);
 		    this.getUserData(current,pageSize);
-		    this.setState({pageSize:pageSize});
+		    this.setState({pageSize:pageSize,currentPage:current});
 		  }.bind(this),
 		  onChange: function (current) {
-		    // console.log(current);
 		    this.getUserData(current,this.state.pageSize);
+		    this.setState({currentPage:current});
 		  }.bind(this)
 		}
 	},

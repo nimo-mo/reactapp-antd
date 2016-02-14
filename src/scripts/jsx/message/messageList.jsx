@@ -2,40 +2,41 @@ var React = require('react');
 var AppContentHeader = require('../component/appContentHeader');
 var Api = require('../../js/api');
 
-import { Button, Table, Pagination, Modal } from 'antd';
+import { Button, Select, Table, Pagination, Modal } from 'antd';
+var Option = Select.Option;
 
-var LecturerList = React.createClass({
+var AdminList = React.createClass({
 	childContextTypes: {
     history: React.PropTypes.object
   },
 	getInitialState: function() {
 		return {
 			total: 0,
-			currentPage: 1,
+			error: '',
 			pageSize: 30,
+			currentPage: 1,
 			dataSource: [],
-			name: '',
-			mobile: ''
+			queryUsername: '',
+			queryUserrole: ''
 		}
 	},
 	componentDidMount: function() {
 		this.getUserData(0,30);
 	},
-  showConfirm: function (msg,upgradeTo) {
+  showConfirm: function (record) {
 	  Modal.confirm({
-	    title: '确认要取消该用户的在助理身份吗',
+	    title: '确认要删除该条记录吗',
 	    content: '',
 	    okText: '是的，我确定',
 	    cancelText: '再考虑一下',
 	    onOk: function () {
-	      Api.post('update_role',{
-	      	type: 'normal'
+	      Api.post('delete_message',{
+	      	uid: record.id
 	      })
 	      .done(function (res) {
 	      	this.getUserData(0,this.state.pageSize);
 	      	Modal.success({
-				    title: '操作成功',
-				    content: '该用的助理身份已被取消，可转至普通用户列表进行查询'
+				    title: '删除成功'
 				  });
 	      }.bind(this))
 	      .fail(function (error) {
@@ -46,12 +47,11 @@ var LecturerList = React.createClass({
 	  });
 	},
 	getUserData: function (page,size) {
-		Api.get('boss_user/list',{
+		Api.get('message_list',{
 			page: page,
 			size: size,
-			name: this.state.name,
-			mobile: this.state.mobile,
-			type: 'assistant',
+			name: this.state.queryUsername,
+			role: this.state.queryUserrole,
 			sort: 'createTime',
 			direction: 'DESC'
 		})
@@ -60,7 +60,7 @@ var LecturerList = React.createClass({
 			var dataSource = res.data.list;
 			for (var i = 0; i<dataSource.length; i++) {
 				dataSource[i].key = i;
-				dataSource[i].operation = ['详细信息','取消助理身份'];
+				dataSource[i].operation = ['删除','修改'];
 			}
 			this.setState({
 				total: total,
@@ -75,32 +75,37 @@ var LecturerList = React.createClass({
 		this.getUserData(0,this.state.pageSize);
 	},
 	resetQueryParams: function () {
-		this.setState({name:'',mobile:''})
+		this.setState({queryUsername:'',queryUserrole:''})
 	},
-	onNameChange: function (e) {
-		this.setState({name:e.target.value})
+	onQueryUsernameChange: function (e) {
+		this.setState({queryUsername:e.target.value})
 	},
-	onMobileChange: function (e) {
-		this.setState({mobile:e.target.value})
+	onQueryUserroleChange: function (e) {
+		this.setState({queryUserrole:e.target.value})
 	},
 	generateColumns: function () {
 		return [{
-			width: 48,
 		  title: 'ID',
 		  dataIndex: 'id',
 		  className: 'tac'
-		},{
-		  title: '真实姓名',
+		}, {
+		  title: '用户名',
 		  dataIndex: 'userName'
 		},{
-		  title: '联系方式',
-		  dataIndex: 'mobile'
+		  title: '角色',
+		  dataIndex: 'bossRoles'
 		},{
-		  title: '头衔',
-		  dataIndex: 'jobTitle'
+		  title: '创建时间',
+		  dataIndex: 'createTime',
+		  render: function (text,record) {
+		  	return <span>{new Date(text).format('yyyy-MM-dd HH:mm:ss')}</span>
+		  }
 		},{
-		  title: '描述',
-		  dataIndex: 'description'
+		  title: '最后修改',
+		  dataIndex: 'updateTime',
+		  render: function (text,record) {
+		  	return <span>{new Date(text).format('yyyy-MM-dd HH:mm:ss')}</span>
+		  }
 		},{
 		  title: '操作',
 		  dataIndex: 'operation',
@@ -108,8 +113,8 @@ var LecturerList = React.createClass({
 		  render: function (text,record) {
 		    return (
 		    	<span className="operation">
-			    	<a href={"#/assistant/detail/"+record.id}>{record.operation[0]}</a>
-			    	<a href="javascript:;" onClick={this.showConfirm}>{record.operation[1]}</a>
+			    	<a href="javascript:;" onClick={this.showConfirm.bind(null,record)}>{record.operation[0]}</a>
+			    	<a href="javascript:;" onClick={this.showConfirm.bind(null,record)}>{record.operation[1]}</a>
 		    	</span>
 	    	)
 		  }.bind(this)
@@ -135,38 +140,39 @@ var LecturerList = React.createClass({
 	},
 	generateCrumb: function () {
 		return {
-			current: '助理管理',
+			current: '自动回复',
 			items: [{
-				href: '#/user/list',
-				title: '用户管理'
+				href: '#/message/list/pushed',
+				title: '微信回复管理'
 			}]
 		}
 	},
 	render: function() {
 		return (
-			<div className="app-content userlist animate">
+			<div className="app-content animate">
 				<AppContentHeader crumb={this.generateCrumb()} />
 				<div className="app-content-body">
 					<div className="ui-panel">
 						<div className="ui-panel-header query-bar clearfix">
 							<label className="query-item fl">
-								<span className="label-name">真实姓名</span>
-								<input className="ui-input" name="name" type="text" value={this.state.name} onChange={this.onNameChange} />
+								<span className="label-name">用户名</span>
+								<input className="ui-input" name="name" type="text" value={this.state.queryUsername} onChange={this.onQueryUsernameChange} />
 							</label>
 							<label className="query-item fl">
-								<span className="label-name">联系方式</span>
-								<input className="ui-input" name="address" type="text" value={this.state.mobile} onChange={this.onMobileChange} />
+								<span className="label-name">角色</span>
+								<input className="ui-input" name="address" type="text" value={this.state.queryUserrole} onChange={this.onQueryUserroleChange} />
 							</label>
 							<div className="ui-btn-group fr">
-								<Button type="primary" onClick={this.resetQueryParams}>重 置</Button>
-								<Button type="primary" onClick={this.queryUserData}>查 询</Button>
+								<Button type="primary" onClick={function(){}}>重 置</Button>
+								<Button type="primary" onClick={function(){}}>查 询</Button>
+								<Button type="primary" onClick={function(){}}>新 增</Button>
 							</div>
 						</div>
 						<div className="ui-panel-body">
 							<Table
 								columns={this.generateColumns()}
-								pagination={this.generatePagination()}
 								dataSource={this.state.dataSource}
+								pagination={this.generatePagination()}
 								bordered />
 						</div>
 					</div>
@@ -176,4 +182,4 @@ var LecturerList = React.createClass({
 	}
 
 });
-module.exports = LecturerList;
+module.exports = AdminList;

@@ -2,7 +2,7 @@ var React = require('react');
 var AppContentHeader = require('../component/appContentHeader');
 var Api = require('../../js/api');
 
-import { Button, Table, Pagination, Modal } from 'antd';
+import { Button, DatePicker, Table, Pagination, Modal } from 'antd';
 
 var UserList = React.createClass({
 	childContextTypes: {
@@ -15,12 +15,60 @@ var UserList = React.createClass({
 			pageSize: 30,
 			dataSource: [],
 			wxNickName: '',
-			mobile: ''
+			mobile: '',
+			date: '',
+			modalVisible: false
 		}
 	},
 	componentDidMount: function() {
 		this.getUserData(0,30);
 	},
+	showModal: function () {
+    this.setState({
+    	date: '',
+    	error: '',
+    	amount: '',
+    	modalVisible: true
+    });
+  },
+  handleOk: function () {
+  	if (this.state.amount === '') {
+  		this.setState({error:'*优惠金额不能为空'});
+  		this.refs['amount'].focus();
+  		return;
+  	};
+  	if (!/^[0-9]+[\.]{0,1}[0-9]{0,2}$/.test(this.state.amount)) {
+  		this.setState({error:'*无效的金额，请重新输入'});
+  		this.refs['amount'].focus();
+  		return;
+  	};
+  	if (this.state.date === '') {
+  		this.setState({error:'*请选择日期'});
+  		return;
+  	};
+    this.setState({
+    	error: '',
+      modalVisible: false
+    });
+    Api.post('coupon',{
+    	amount: this.state.amount,
+    	date: this.state.date
+    })
+    .done(function (res) {
+    	Modal.success({
+    		title: '操作成功',
+		    okText: '关 闭'
+    	});
+    }.bind(this))
+    .fail(function (error) {
+    	console.log(error)
+    })
+  },
+  handleCancel: function (e) {
+    this.setState({
+      modalVisible: false
+    });
+  },
   showConfirm: function (msg,upgradeTo) {
 	  Modal.confirm({
 	    title: '确认要将该用户'+msg+'吗',
@@ -61,7 +109,7 @@ var UserList = React.createClass({
 			var dataSource = res.data.list;
 			for (var i = 0; i<dataSource.length; i++) {
 				dataSource[i].key = i;
-				dataSource[i].operation = ['升级为讲师','升级为助理'];
+				dataSource[i].operation = ['赠送优惠券','升级为讲师','升级为助理'];
 			}
 			this.setState({
 				total: total,
@@ -84,6 +132,12 @@ var UserList = React.createClass({
 	onMobileChange: function (e) {
 		this.setState({mobile:e.target.value})
 	},
+	onDateChange: function (value) {
+  	this.setState({date:new Date(value).format('yyyy-MM-dd')})
+  },
+  onAmountChange: function (e) {
+  	this.setState({amount:e.target.value})
+  },
 	generateColumns: function () {
 		return [{
 			width: 48,
@@ -124,8 +178,9 @@ var UserList = React.createClass({
 		  render: function (text,record) {
 		    return (
 		    	<span className="operation">
-			    	<a href="javascript:;" onClick={this.showConfirm.bind(null,record.operation[0],'assistant')}>{record.operation[0]}</a>
-			    	<a href="javascript:;" onClick={this.showConfirm.bind(null,record.operation[1],'lecturer')}>{record.operation[1]}</a>
+		    		<a href="javascript:;" onClick={this.showModal}>{record.operation[0]}</a>
+			    	<a href="javascript:;" onClick={this.showConfirm.bind(null,record.operation[1],'assistant')}>{record.operation[1]}</a>
+			    	<a href="javascript:;" onClick={this.showConfirm.bind(null,record.operation[2],'lecturer')}>{record.operation[2]}</a>
 		    	</span>
 	    	)
 		  }.bind(this)
@@ -134,19 +189,18 @@ var UserList = React.createClass({
 	generatePagination: function () {
 		return {
 		  total: this.state.total,
-		  current: 1,
+		  current: this.state.currentPage,
 		  pageSize: this.state.pageSize,
 		  showSizeChanger: true,
 		  showQuickJumper: true,
 		  pageSizeOptions: ['20','30','50'],
 		  onShowSizeChange: function (current, pageSize) {
-		    // console.log('Current: ', current, '; PageSize: ', pageSize);
 		    this.getUserData(current,pageSize);
-		    this.setState({pageSize:pageSize});
+		    this.setState({pageSize:pageSize,currentPage:current});
 		  }.bind(this),
 		  onChange: function (current) {
-		    // console.log(current);
 		    this.getUserData(current,this.state.pageSize);
+		    this.setState({currentPage:current});
 		  }.bind(this)
 		}
 	},
@@ -185,6 +239,45 @@ var UserList = React.createClass({
 								pagination={this.generatePagination()}
 								dataSource={this.state.dataSource}
 								bordered />
+							<Modal
+								width="400"
+								title="赠送优惠券"
+								className="free-time-modal"
+								visible={this.state.modalVisible}
+								onOk={this.handleOk}
+								onCancel={this.handleCancel}>
+								<table className="form-table">
+									<tbody>
+										<tr>
+											<td width="70" className="tar">优惠金额</td>
+											<td>
+												<input
+													ref="amount"
+													type="text"
+													className="ui-input"
+													placeholder="请输入优惠金额"
+													style={{width:'100%'}}
+													value={this.state.amount}
+													onChange={this.onAmountChange} />
+											</td>
+										</tr>
+										<tr>
+											<td className="tar">截止日期</td>
+											<td>
+												<DatePicker
+													ref="free-date"
+													style={{width:282}}
+													value={this.state.date}
+													onChange={this.onDateChange} />
+											</td>
+										</tr>
+										<tr>
+											<td className="tar"></td>
+											<td className="error-msg">{this.state.error}</td>
+										</tr>
+									</tbody>
+								</table>
+							</Modal>
 						</div>
 					</div>
 				</div>
