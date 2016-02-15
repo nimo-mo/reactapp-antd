@@ -1,0 +1,16 @@
+{
+	"code": 0,
+	"msg": "",
+	"data": {
+    "id": 1,
+    "title": "pushed message",
+    "content": "some reply content",
+    "description": "some description",
+    "origin": "http://www.example.com",
+    "cover": "cover.png",
+    "keywords": "some keywords",
+    "keywordsMatchType": "like/equal",
+    "replyType": "both",
+    "createTime": 1454224510000,
+    "updateTime": 1454224510000
+}

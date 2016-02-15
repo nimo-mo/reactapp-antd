@@ -92,6 +92,23 @@ app.get('/message_list', function (request, response) {
   response.sendFile(path.resolve(__dirname, 'response', 'messagelist.json'));
 });
 
+app.get('/message/*', function (request, response) {
+  response.sendFile(path.resolve(__dirname, 'response', 'message.json'));
+});
+
+app.put('/message/*', function (request, response) {
+  response.json({})
+});
+
+app.post('/message/*', function (request, response) {
+  response.json({})
+});
+
+app.delete('/message/*', function (request, response) {
+  response.json({})
+});
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

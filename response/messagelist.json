@@ -10,46 +10,41 @@
     "list": [
       {
         "id": 1,
-        "userName": "Oliver",
+        "title": "pushed message",
+        "content": "some reply content",
+        "description": "some description",
+        "origin": "http://www.example.com",
+        "cover": "cover.png",
+        "keywords": "some keywords",
+        "keywordsMatchType": "like/equal",
+        "replyType": "both",
         "createTime": 1454224510000,
-        "updateTime": 1454224510000,
-        "wxNickName": "蕃茄小奴婢",
-        "mobile": "18902461234",
-        "area": "中国广东深圳",
-        "company": "深圳市雨新电线电缆有限公司",
-        "jobTitle": "master",
-        "description": "master",
-        "userrole": "admin+",
-        "bossRoles": []
-      },
-      {
+        "updateTime": 1454224510000
+      },{
         "id": 2,
-        "userName": "Oliver",
+        "title": "pushed message",
+        "content": "some reply content",
+        "description": "some description",
+        "origin": "http://www.example.com",
+        "cover": "cover.png",
+        "keywords": "some keywords",
+        "keywordsMatchType": "like/equal",
+        "replyType": "both",
         "createTime": 1454224510000,
-        "updateTime": 1454224510000,
-        "wxNickName": "蕃茄小奴婢",
-        "mobile": "18902461234",
-        "area": "中国广东深圳",
-        "company": "深圳市雨新电线电缆有限公司",
-        "jobTitle": "master",
-        "description": "master",
-        "userrole": "admin+",
-        "bossRoles": []
-      },
-      {
+        "updateTime": 1454224510000
+      },{
         "id": 3,
-        "userName": "Oliver",
+        "title": "pushed message",
+        "content": "some reply content",
+        "description": "some description",
+        "origin": "http://www.example.com",
+        "cover": "cover.png",
+        "keywords": "some keywords",
+        "keywordsMatchType": "like/equal",
+        "replyType": "both",
         "createTime": 1454224510000,
-        "updateTime": 1454224510000,
-        "wxNickName": "蕃茄小奴婢",
-        "mobile": "18902461234",
-        "area": "中国广东深圳",
-        "company": "深圳市雨新电线电缆有限公司",
-        "jobTitle": "master",
-        "description": "master",
-        "userrole": "admin+",
-        "bossRoles": []
+        "updateTime": 1454224510000
       }
     ]
-	}
+  }
 }

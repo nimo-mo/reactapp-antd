@@ -5,7 +5,7 @@ var Api = require('../../js/api');
 import { Button, Select, Table, Pagination, Modal } from 'antd';
 var Option = Select.Option;
 
-var AdminList = React.createClass({
+var MessageList = React.createClass({
 	childContextTypes: {
     history: React.PropTypes.object
   },
@@ -16,12 +16,12 @@ var AdminList = React.createClass({
 			pageSize: 30,
 			currentPage: 1,
 			dataSource: [],
-			queryUsername: '',
-			queryUserrole: ''
+			title: '',
+			keywords: ''
 		}
 	},
-	componentDidMount: function() {
-		this.getUserData(0,30);
+	componentDidMount: function () {
+		this.getMessageList(0,30);
 	},
   showConfirm: function (record) {
 	  Modal.confirm({
@@ -30,11 +30,9 @@ var AdminList = React.createClass({
 	    okText: '是的，我确定',
 	    cancelText: '再考虑一下',
 	    onOk: function () {
-	      Api.post('delete_message',{
-	      	uid: record.id
-	      })
+	      Api.delete('message/'+record.id,{})
 	      .done(function (res) {
-	      	this.getUserData(0,this.state.pageSize);
+	      	this.getMessageList(0,this.state.pageSize);
 	      	Modal.success({
 				    title: '删除成功'
 				  });
@@ -46,12 +44,12 @@ var AdminList = React.createClass({
 	    onCancel: function () {}
 	  });
 	},
-	getUserData: function (page,size) {
+	getMessageList: function (page,size) {
 		Api.get('message_list',{
 			page: page,
 			size: size,
-			name: this.state.queryUsername,
-			role: this.state.queryUserrole,
+			name: this.state.title,
+			role: this.state.keywords,
 			sort: 'createTime',
 			direction: 'DESC'
 		})
@@ -71,29 +69,48 @@ var AdminList = React.createClass({
 			console.log(error)
 		});
 	},
-	queryUserData: function () {
-		this.getUserData(0,this.state.pageSize);
+	queryMessageList: function () {
+		this.getMessageList(0,this.state.pageSize);
 	},
 	resetQueryParams: function () {
-		this.setState({queryUsername:'',queryUserrole:''})
+		this.setState({title:'',keywords:''})
 	},
-	onQueryUsernameChange: function (e) {
-		this.setState({queryUsername:e.target.value})
+	onQueryTitleChange: function (e) {
+		this.setState({title:e.target.value})
 	},
-	onQueryUserroleChange: function (e) {
-		this.setState({queryUserrole:e.target.value})
+	onQueryKeywordsChange: function (e) {
+		this.setState({keywords:e.target.value})
+	},
+	pushToMessageDetail: function () {
+		this.props.history.push('/message/create')
 	},
 	generateColumns: function () {
 		return [{
 		  title: 'ID',
 		  dataIndex: 'id',
-		  className: 'tac'
-		}, {
-		  title: '用户名',
-		  dataIndex: 'userName'
+		  className: 'tac',
+		  width: 48
 		},{
-		  title: '角色',
-		  dataIndex: 'bossRoles'
+			title: '关键字',
+			dataIndex: 'keywords'
+		},{
+			title: '关键字匹配类型',
+			dataIndex: 'keywordsMatchType'
+		},{
+			title: '回复方式',
+			dataIndex: 'replyType'
+		},{
+		  title: '标题',
+		  dataIndex: 'title'
+		},{
+		  title: '内容',
+		  dataIndex: 'content'
+		},{
+			title: '描述',
+			dataIndex: 'description'
+		},{
+			title: '原文地址',
+			dataIndex: 'origin'
 		},{
 		  title: '创建时间',
 		  dataIndex: 'createTime',
@@ -114,7 +131,7 @@ var AdminList = React.createClass({
 		    return (
 		    	<span className="operation">
 			    	<a href="javascript:;" onClick={this.showConfirm.bind(null,record)}>{record.operation[0]}</a>
-			    	<a href="javascript:;" onClick={this.showConfirm.bind(null,record)}>{record.operation[1]}</a>
+			    	<a href={"#/message/"+record.id}>{record.operation[1]}</a>
 		    	</span>
 	    	)
 		  }.bind(this)
@@ -129,11 +146,11 @@ var AdminList = React.createClass({
 		  showQuickJumper: true,
 		  pageSizeOptions: ['20','30','50'],
 		  onShowSizeChange: function (current, pageSize) {
-		    this.getUserData(current,pageSize);
+		    this.getMessageList(current,pageSize);
 		    this.setState({pageSize:pageSize,currentPage:current});
 		  }.bind(this),
 		  onChange: function (current) {
-		    this.getUserData(current,this.state.pageSize);
+		    this.getMessageList(current,this.state.pageSize);
 		    this.setState({currentPage:current});
 		  }.bind(this)
 		}
@@ -155,17 +172,17 @@ var AdminList = React.createClass({
 					<div className="ui-panel">
 						<div className="ui-panel-header query-bar clearfix">
 							<label className="query-item fl">
-								<span className="label-name">用户名</span>
-								<input className="ui-input" name="name" type="text" value={this.state.queryUsername} onChange={this.onQueryUsernameChange} />
+								<span className="label-name">标题</span>
+								<input className="ui-input" name="name" type="text" value={this.state.title} onChange={this.onQueryTitleChange} />
 							</label>
 							<label className="query-item fl">
-								<span className="label-name">角色</span>
-								<input className="ui-input" name="address" type="text" value={this.state.queryUserrole} onChange={this.onQueryUserroleChange} />
+								<span className="label-name">关键字</span>
+								<input className="ui-input" name="address" type="text" value={this.state.keywords} onChange={this.onQueryKeywordsChange} />
 							</label>
 							<div className="ui-btn-group fr">
-								<Button type="primary" onClick={function(){}}>重 置</Button>
-								<Button type="primary" onClick={function(){}}>查 询</Button>
-								<Button type="primary" onClick={function(){}}>新 增</Button>
+								<Button type="primary" onClick={this.resetQueryParams}>重 置</Button>
+								<Button type="primary" onClick={this.queryMessageList}>查 询</Button>
+								<Button type="primary" onClick={this.pushToMessageDetail}>新 增</Button>
 							</div>
 						</div>
 						<div className="ui-panel-body">
@@ -182,4 +199,4 @@ var AdminList = React.createClass({
 	}
 
 });
-module.exports = AdminList;
+module.exports = MessageList;

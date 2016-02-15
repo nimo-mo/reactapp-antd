@@ -27,6 +27,7 @@ var Login = require('./jsx/login');
 var Course = require('./jsx/course/index');
 var Dashboard = require('./jsx/dashboard/index');
 var MessageList = require('./jsx/message/messageList');
+var Message = require('./jsx/message/message');
 
 var UserList = require('./jsx/user/userlist');
 var LecturerList = require('./jsx/user/lecturerList');
@@ -58,6 +59,7 @@ ReactDOM.render((
     <Route path="/course" components={Course}></Route>
     <Route path="/dashboard" components={Dashboard}></Route>
     <Route path="/message/list/:type" components={MessageList}></Route>
+    <Route path="/message/:id" components={Message}></Route>
     <Route path="/user/list" components={UserList}></Route>
     <Route path="/lecturer/list" components={LecturerList}></Route>
     <Route path="/assistant/list" components={AssistantList}></Route>

@@ -33,6 +33,10 @@ api.post = function (path,data,ajaxSettings) {
 	return api.request('POST',path,data,ajaxSettings)
 };
 
+api.delete = function (path,data,ajaxSettings) {
+	return api.request('DELETE',path,data,ajaxSettings)
+};
+
 api.upload = function (path,data,ajaxSettings) {
 	return api.request('POST',path,{},{
 		data: data,
